@@ -4,6 +4,7 @@ public class Assistant implements Runnable {
     static List<Books> booksToTake = new ArrayList<Books>();
     static List<Books> booksInHands = new ArrayList<Books>();
     private final Object lock = new Object();
+    private static Books book;
 
     static int carrySpace = 10;
     static boolean isBusy = false;
@@ -54,50 +55,158 @@ public class Assistant implements Runnable {
                 if (booksInHands.size() == 0) {
                     booksInHands = takeBooksFromBox();
                 }
+                System.out.println("Books in hand: " + booksInHands);
                 if (booksInHands.size() != 0) {
                     synchronized (lock) {
                         Iterator<Books> iterator = booksInHands.iterator();
                         while (iterator.hasNext()) {
-                            Books book = iterator.next();
+                            book = iterator.next();
                             if (book.toString().equals("Fiction")) {
-                                Shelve.StackFictionShelf(book);
+                                Shelve.AddBooksToShelves(book);
                                 iterator.remove(); // remove the book from booksInHands
-                                System.out.println("Fiction: " + Shelve.FictionShelf);
-                                if (!iterator.hasNext()) { // stay at the Fiction shelf until all Fiction books are stacked
+                                System.out.println("<" + Main.tickCount + ">" + "Fiction: " + Shelve.FictionShelf);
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException e) {
+                                    // TODO Auto-generated catch block
+                                    e.printStackTrace();
+                                }
+
+                                if (!iterator.hasNext()) { // stay at the Fiction shelf until all Fiction books are
+                                                           // stacked
                                     try {
-                                        Thread.sleep(10000); // simulate 10 seconds to move to the next shelf
+                                        Thread.sleep(1000); // simulate 10 seconds to move to the next shelf
                                     } catch (InterruptedException e) {
                                         e.printStackTrace();
                                     }
                                 }
-                            } else if (book.toString().equals("Sport")) {
-                                Shelve.StackSportShelf(book);
+                            }
+                        }
+                        iterator = booksInHands.iterator();
+                        while (iterator.hasNext()) {
+                            // System.out.println("In SPort");
+                            book = iterator.next();
+                            if (book.toString().equals("Sport")) {
+                                Shelve.AddBooksToShelves(book);
                                 iterator.remove(); // remove the book from booksInHands
-                                System.out.println("Sport: " + Shelve.SportShelf);
-                            } else if (book.toString().equals("Fantasy")) {
-                                Shelve.StackFantasyShelf(book);
+                                System.out.println("<" + Main.tickCount + ">" + "Sport: " + Shelve.SportShelf);
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException e) {
+                                    // TODO Auto-generated catch block
+                                    e.printStackTrace();
+                                }
+                            }
+                            if (!iterator.hasNext()) { // stay at the Fiction shelf until all Fiction books are stacked
+                                try {
+                                    Thread.sleep(1000); // simulate 10 seconds to move to the next shelf
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                        iterator = booksInHands.iterator();
+
+                        while (iterator.hasNext()) {
+                            book = iterator.next();
+                            if (book.toString().equals("Fantasy")) {
+                                Shelve.AddBooksToShelves(book);
                                 iterator.remove(); // remove the book from booksInHands
-                                System.out.println("Fantasy: " + Shelve.FantasyShelf);
-                            } else if (book.toString().equals("Horror")) {
-                                Shelve.StackHorrorShelf(book);
+                                System.out.println("<" + Main.tickCount + ">" + "Fantasy: " + Shelve.FantasyShelf);
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException e) {
+                                    // TODO Auto-generated catch block
+                                    e.printStackTrace();
+                                }
+                            }
+                            if (!iterator.hasNext()) { // stay at the Fiction shelf until all Fiction books are
+                                                       // stacked
+                                try {
+                                    Thread.sleep(1000); // simulate 10 seconds to move to the next shelf
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                        iterator = booksInHands.iterator();
+
+                        while (iterator.hasNext()) {
+                            book = iterator.next();
+                            if (book.toString().equals("Horror")) {
+                                Shelve.AddBooksToShelves(book);
                                 iterator.remove(); // remove the book from booksInHands
-                                System.out.println("Horror: " + Shelve.HorrorShelf);
-                            } else if (book.toString().equals("Romance")) {
-                                Shelve.StackRomanceShelf(book);
+                                System.out.println("<" + Main.tickCount + ">" + "Horror: " + Shelve.HorrorShelf);
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException e) {
+                                    // TODO Auto-generated catch block
+                                    e.printStackTrace();
+                                }
+                            }
+                            if (!iterator.hasNext()) { // stay at the Fiction shelf until all Fiction books are
+                                                       // stacked
+                                try {
+                                    Thread.sleep(1000); // simulate 10 seconds to move to the next shelf
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                        iterator = booksInHands.iterator();
+
+                        while (iterator.hasNext()) {
+                            book = iterator.next();
+                            if (book.toString().equals("Crime")) {
+                                Shelve.AddBooksToShelves(book);
                                 iterator.remove(); // remove the book from booksInHands
-                                System.out.println("Romance: " + Shelve.RomanceShelf);
-                            } else if (book.toString().equals("Crime")) {
-                                Shelve.StackCrimeShelf(book);
+                                System.out.println("<" + Main.tickCount + ">" + "Crime: " + Shelve.CrimeShelf);
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException e) {
+                                    // TODO Auto-generated catch block
+                                    e.printStackTrace();
+                                }
+                            }
+                            if (!iterator.hasNext()) { // stay at the Fiction shelf until all Fiction books are
+                                                       // stacked
+                                try {
+                                    Thread.sleep(1000); // simulate 10 seconds to move to the next shelf
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                        iterator = booksInHands.iterator();
+
+                        while (iterator.hasNext()) {
+                            book = iterator.next();
+                            if (book.toString().equals("Romance")) {
+                                Shelve.AddBooksToShelves(book);
                                 iterator.remove(); // remove the book from booksInHands
-                                System.out.println("Crime: " + Shelve.CrimeShelf);
+                                System.out.println("<" + Main.tickCount + ">" + "Romance: " + Shelve.RomanceShelf);
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException e) {
+                                    // TODO Auto-generated catch block
+                                    e.printStackTrace();
+                                }
+                            }
+                            if (!iterator.hasNext()) { // stay at the Fiction shelf until all Fiction books are
+                                                       // stacked
+                                try {
+                                    Thread.sleep(1000); // simulate 10 seconds to move to the next shelf
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         }
                     }
                 }
-                System.out.println(booksInHands);
-                // System.out.println("Check books");
-                Tick.deliveryRecieved = false;
             }
+            // System.out.println(booksInHands);
+            // System.out.println("Check books");
+            Tick.deliveryRecieved = false;
         }
     }
 
