@@ -5,6 +5,7 @@ public class Assistant implements Runnable {
     static List<Books> booksInHands = new ArrayList<Books>();
     private final Object lock = new Object();
     private static Books book;
+    List<String> priorityType = new ArrayList<String>();
 
     static int carrySpace = 10;
     static boolean isBusy = false;
@@ -14,6 +15,29 @@ public class Assistant implements Runnable {
         if (!books.isEmpty()) {
             while (booksToTake.size() < carrySpace) {
                 for (Books book : books) {
+                    booksToTake.add(book);
+                }
+            }
+            books.removeAll(booksToTake);
+            return booksToTake;
+        } else {
+            return null;
+        }
+    }
+
+    public synchronized static List<Books> takePriorityBooksFromBox(List<String> priorityType) {
+        List<Books> books = Box.getBooks();
+        int i = 0;
+        if (!books.isEmpty()) {
+            while (booksToTake.size() < carrySpace) {
+                for (Books book : books) {
+                    while (i < priorityType.size()) {
+                        if (book.toString() == priorityType.get(i)) {
+                            booksToTake.add(book);
+                        }
+                        i++;
+                    }
+
                     booksToTake.add(book);
                 }
             }
@@ -36,6 +60,15 @@ public class Assistant implements Runnable {
         return Size;
     }
 
+    public boolean IsWaiting(Queue<String> Shelf) {
+        boolean IsWaiting = false;
+        if (Shelf.size() != 0) {
+            IsWaiting = true;
+        }
+
+        return IsWaiting;
+    }
+
     @Override
     public String toString() {
         return "" + booksToTake;
@@ -44,6 +77,7 @@ public class Assistant implements Runnable {
     @Override
     public void run() {
         while (Main.TICKS_PER_DAY > 0) {
+
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -52,8 +86,32 @@ public class Assistant implements Runnable {
             }
             // System.out.println(Tick.deliveryRecieved);
             if (Tick.deliveryRecieved == true) {
-                if (booksInHands.size() == 0) {
+
+                if (IsWaiting(Shelve.CrimeWaitingLine)) {
+                    priorityType.add("Crime");
+                }
+                if (IsWaiting(Shelve.HorrorWaitingLine)) {
+                    priorityType.add("Horror");
+                }
+                if (IsWaiting(Shelve.RomanceWaitingLine)) {
+                    priorityType.add("Romance");
+                }
+                if (IsWaiting(Shelve.FantasyWaitingLine)) {
+                    priorityType.add("Fantasy");
+                }
+                if (IsWaiting(Shelve.FictionWaitingLine)) {
+                    priorityType.add("Fiction");
+                }
+                if (IsWaiting(Shelve.SportWaitingLine)) {
+                    priorityType.add("Sport");
+                }
+
+                System.out.println(priorityType);
+
+                if (booksInHands.size() == 0 && priorityType.size() == 0) {
                     booksInHands = takeBooksFromBox();
+                } else if (booksInHands.size() == 0 && priorityType.size() != 0) {
+                    booksInHands = takePriorityBooksFromBox(priorityType);
                 }
                 System.out.println("Books in hand: " + booksInHands);
                 if (booksInHands.size() != 0) {

@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.Queue;
 
 public class Shelve {
     static int capacity = 20;

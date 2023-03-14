@@ -42,53 +42,46 @@ public class Customer implements Runnable {
     public void run() {
         try {
             while (true) {
-                Thread.sleep(100);
-                if (Main.tickCount % 10 == 0) {
-                    customerCount++;
-                    customer = "Customer-" + customerCount;
-                    String genre = genres[random.nextInt(genres.length)];
-                    if (genre == "fiction" && !Shelve.FictionShelf.isEmpty()) {
-                        takeBook(genre);
-                        System.out.println("Customer bought a book from " + genre + " section.");
-                    } else if (genre == "fiction" && Shelve.FictionShelf.isEmpty()) {
-                        System.out.println("Fiction Customers Waiting" + Shelve.FictionWaitingLine);
-                        Shelve.CustomerWaitingLine(Shelve.FictionWaitingLine, customer);
-                    }
-                    if (genre == "fantasy" && !Shelve.FantasyShelf.isEmpty()) {
-                        takeBook(genre);
-                        System.out.println("Customer bought a book from " + genre + " section.");
-                    } else if (genre == "fantasy" && Shelve.FantasyShelf.isEmpty()) {
-                        System.out.println("Fanstasy Customers Waiting" + Shelve.FantasyWaitingLine);
-                        Shelve.CustomerWaitingLine(Shelve.FantasyWaitingLine, customer);
-                    }
-                    if (genre == "crime" && !Shelve.RomanceShelf.isEmpty()) {
-                        takeBook(genre);
-                        System.out.println("Customer bought a book from " + genre + " section.");
-                    } else if (genre == "crime" && Shelve.CrimeShelf.isEmpty()) {
-                        System.out.println("Romance Customers Waiting" + Shelve.RomanceWaitingLine);
-                        Shelve.CustomerWaitingLine(Shelve.RomanceWaitingLine, customer);
-                    }
-                    if (genre == "romance" && !Shelve.CrimeShelf.isEmpty()) {
-                        takeBook(genre);
-                        System.out.println("Customer bought a book from " + genre + " section.");
-                    } else if (genre == "romance" && Shelve.RomanceShelf.isEmpty()) {
-                        System.out.println("Crime Customers Waiting" + Shelve.CrimeWaitingLine);
-                        Shelve.CustomerWaitingLine(Shelve.CrimeWaitingLine, customer);
-                    }
-                    if (genre == "horror" && !Shelve.HorrorShelf.isEmpty()) {
-                        takeBook(genre);
-                        System.out.println("Customer bought a book from " + genre + " section.");
-                    } else if (genre == "horror" && Shelve.HorrorShelf.isEmpty()) {
-                        System.out.println("Horror Customers Waiting" + Shelve.HorrorWaitingLine);
-                        Shelve.CustomerWaitingLine(Shelve.HorrorWaitingLine, customer);
-                    }
-                    if (genre == "sport" && !Shelve.SportShelf.isEmpty()) {
-                        takeBook(genre);
-                        System.out.println("Sport Customer bought a book from " + genre + " section.");
-                    } else if (genre == "sport" && Shelve.SportShelf.isEmpty()) {
-                        System.out.println("Sport Customers Waiting" + Shelve.SportWaitingLine);
-                        Shelve.CustomerWaitingLine(Shelve.SportWaitingLine, customer);
-                    }
+                Thread.sleep(1000);
+                customerCount++;
+                customer = "Customer-" + customerCount;
+                String genre = genres[random.nextInt(genres.length)];
+                if (genre == "fiction" && !Shelve.FictionShelf.isEmpty()) {
+                    takeBook(genre);
+                    System.out.println("Customer bought a book from " + genre + " section.");
+                } else if (genre == "fiction" && Shelve.FictionShelf.isEmpty()) {
+                    System.out.println("Fiction Customers Waiting" + Shelve.FictionWaitingLine);
+                    Shelve.CustomerWaitingLine(Shelve.FictionWaitingLine, customer);
+                } else if (genre == "fantasy" && !Shelve.FantasyShelf.isEmpty()) {
+                    takeBook(genre);
+                    System.out.println("Customer bought a book from " + genre + " section.");
+                } else if (genre == "fantasy" && Shelve.FantasyShelf.isEmpty()) {
+                    System.out.println("Fanstasy Customers Waiting" + Shelve.FantasyWaitingLine);
+                    Shelve.CustomerWaitingLine(Shelve.FantasyWaitingLine, customer);
+                } else if (genre == "crime" && !Shelve.CrimeShelf.isEmpty()) {
+                    takeBook(genre);
+                    System.out.println("Customer bought a book from " + genre + " section.");
+                } else if (genre == "crime" && Shelve.CrimeShelf.isEmpty()) {
+                    System.out.println("Romance Customers Waiting" + Shelve.CrimeWaitingLine);
+                    Shelve.CustomerWaitingLine(Shelve.CrimeWaitingLine, customer);
+                } else if (genre == "romance" && !Shelve.RomanceShelf.isEmpty()) {
+                    takeBook(genre);
+                    System.out.println("Customer bought a book from " + genre + " section.");
+                } else if (genre == "romance" && Shelve.RomanceShelf.isEmpty()) {
+                    System.out.println("Crime Customers Waiting" + Shelve.RomanceWaitingLine);
+                    Shelve.CustomerWaitingLine(Shelve.RomanceWaitingLine, customer);
+                } else if (genre == "horror" && !Shelve.HorrorShelf.isEmpty()) {
+                    takeBook(genre);
+                    System.out.println("Customer bought a book from " + genre + " section.");
+                } else if (genre == "horror" && Shelve.HorrorShelf.isEmpty()) {
+                    System.out.println("Horror Customers Waiting" + Shelve.HorrorWaitingLine);
+                    Shelve.CustomerWaitingLine(Shelve.HorrorWaitingLine, customer);
+                } else if (genre == "sport" && !Shelve.SportShelf.isEmpty()) {
+                    takeBook(genre);
+                    System.out.println("Sport Customer bought a book from " + genre + " section.");
+                } else if (genre == "sport" && Shelve.SportShelf.isEmpty()) {
+                    System.out.println("Sport Customers Waiting" + Shelve.SportWaitingLine);
+                    Shelve.CustomerWaitingLine(Shelve.SportWaitingLine, customer);
                 }
             }
         } catch (InterruptedException e) {

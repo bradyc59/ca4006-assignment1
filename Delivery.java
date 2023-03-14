@@ -32,6 +32,11 @@ public class Delivery {
         return Size;
     }
 
+    @Override
+    public String toString() {
+        return "" + DeliveryList;
+    }
+
     public static String NextDeliveryTime() {
         List<String> ProbabilityOfDelivery = new ArrayList<String>();
         var i = 0;
@@ -54,16 +59,11 @@ public class Delivery {
         return IsDelivery;
     }
 
-    @Override
-    public String toString() {
-        return "" + DeliveryList;
-    }
-
     public static void main(String[] args) {
-        String isDelivery = NextDeliveryTime();
-        if (isDelivery == "True") {
-            GenerateDelivery();
-        }
+        // String isDelivery = NextDeliveryTime();
+        // if (isDelivery == "True") {
+        System.out.println(GenerateDelivery());
+        // }
 
     }
 

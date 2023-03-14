@@ -85,7 +85,7 @@ public class Box implements Runnable{
     }
     @Override
     public void run() {
-            List<Books> deliveredContents1 = delivery.GenerateDelivery();
+            List<Books> deliveredContents1 = Delivery.GenerateDelivery();
             box.FillBox(new ArrayList<>(deliveredContents1));
             deliveredContents1.clear();
         }

@@ -43,7 +43,122 @@ public class Main {
     // }
     // return false;
     // }
+
+    public static void StartShelves() {
+        List<String> CategoriesUsed = new ArrayList<String>();
+
+        while (CategoriesUsed.size() < 6) {
+            // Books book = new Books();
+            Books book = Books.GenerateBook();
+
+            // boolean CategoryAlreadyAdded = false;
+            // System.out.println(book.toString());
+            if (!CategoriesUsed.contains(book.toString())) {
+
+                String book_category = book.toString();
+
+                if (book_category.equals("Horror")) {
+                    CategoriesUsed.add("Horror");
+
+                    Shelve.HorrorShelf.add(book);
+
+                    System.out.println(Shelve.HorrorShelf);
+                }
+
+                if (book_category.equals("Sport")) {
+                    CategoriesUsed.add("Sport");
+
+                    Shelve.SportShelf.add(book);
+
+                    System.out.println(Shelve.SportShelf);
+                }
+
+                if (book_category.equals("Fiction")) {
+                    CategoriesUsed.add("Fiction");
+
+                    Shelve.FictionShelf.add(book);
+
+                    System.out.println(Shelve.FictionShelf);
+                }
+
+                if (book_category.equals("Fantasy")) {
+                    CategoriesUsed.add("Fantasy");
+
+                    Shelve.FantasyShelf.add(book);
+
+                    System.out.println(Shelve.FantasyShelf);
+                }
+
+                if (book_category.equals("Romance")) {
+                    CategoriesUsed.add("Romance");
+
+                    Shelve.RomanceShelf.add(book);
+
+                    System.out.println(Shelve.RomanceShelf);
+                }
+
+                if (book_category.equals("Crime")) {
+                    CategoriesUsed.add("Crime");
+
+                    Shelve.CrimeShelf.add(book);
+
+                    System.out.println(Shelve.CrimeShelf);
+                }
+            }
+
+            // if (CategoryAlreadyAdded == true) {
+            // x = 0;
+            // book = new Books();
+            // if (book.toString() == CategoriesUsed.get(x)) {
+            // CategoryAlreadyAdded = true;
+            // }
+            // }
+
+            // if (book.Category == "Horror" && CategoryAlreadyAdded == false) {
+            // CategoriesUsed.add("Horror");
+            // Shelve.HorrorShelf.add(book);
+            // }
+
+            // if (book.Category == "Sport" && CategoryAlreadyAdded == false) {
+            // CategoriesUsed.add("Sport");
+            // Shelve.SportShelf.add(book);
+            // }
+
+            // if (book.Category == "Fiction" && CategoryAlreadyAdded == false) {
+            // CategoriesUsed.add("Fiction");
+            // Shelve.FictionShelf.add(book);
+            // }
+
+            // if (book.Category == "Fantasy" && CategoryAlreadyAdded == false) {
+            // CategoriesUsed.add("Fantasy");
+            // Shelve.FantasyShelf.add(book);
+            // }
+
+            // if (book.Category == "Romance" && CategoryAlreadyAdded == false) {
+            // CategoriesUsed.add("Romance");
+            // Shelve.RomanceShelf.add(book);
+            // }
+
+            // if (book.Category == "Crime" && CategoryAlreadyAdded == false) {
+            // CategoriesUsed.add("Crime");
+            // Shelve.CrimeShelf.add(book);
+            // }
+
+            // i++;
+        }
+
+        System.out.println("Each Shelf contains 1 book");
+
+        // System.out.println(Shelve.FictionShelf);
+        // System.out.println(Shelve.HorrorShelf);
+        // System.out.println(Shelve.FantasyShelf);
+        // System.out.println(Shelve.SportShelf);
+        // System.out.println(Shelve.CrimeShelf);
+        // System.out.println(Shelve.RomanceShelf);
+    }
+
     public static void main(String[] args) {
+        StartShelves();
         List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < 1; i++) {
             // assistants.add(new Assistant());
