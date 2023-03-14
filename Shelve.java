@@ -63,6 +63,15 @@ public class Shelve {
         return CustomerWaitingLine;
     }
 
+    public static boolean LineEmpty(Queue<String> CustomerWaitingLine) {
+        if (CustomerWaitingLine.size() == 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     @Override
     public String toString() {
         return "";

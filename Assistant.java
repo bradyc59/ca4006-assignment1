@@ -48,7 +48,8 @@ public class Assistant implements Runnable {
             }
             books.removeAll(booksToTake);
             return booksToTake;
-        } else {
+        } 
+        else {
             return null;
         }
     }

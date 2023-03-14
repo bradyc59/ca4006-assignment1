@@ -86,5 +86,11 @@ public class Main {
             // System.out.println(thread);
             thread.start();
         }
+
+        if (tickCount % TICKS_PER_DAY == 0) {
+            int AverageWaitTime = Customer.WaitTimeAverage(Customer.CustomerWaitTimes);
+
+            System.out.println(AverageWaitTime);
+        }
     }
 }
