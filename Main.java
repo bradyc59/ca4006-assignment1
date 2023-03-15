@@ -1,8 +1,12 @@
 import java.util.*;
+import javax.swing.*;
+import java.io.FileWriter;
+import java.io.IOException;
 
+// Our Main class is used to run the overall project and all the classes
 public class Main {
     public static int TICKS_PER_DAY = 1000;
-    public static int TICK_TIME_SIZE = 100;
+    public static int TICK_TIME_SIZE = 1000;
 
     public static int tickCount = 0;
     public static Box box = new Box();
@@ -11,16 +15,7 @@ public class Main {
 
     private final static List<Assistant> assistants = new ArrayList<>();
 
-
-    public static int MilliSecondsNeeded(int TICK_TIME_SIZE, int HowManyTicks) 
-    {
-        int MillisToTick = 1000 / TICK_TIME_SIZE;
-
-        HowManyTicks = MillisToTick * HowManyTicks;
-
-        return HowManyTicks;
-    }
-
+    // Function to ensure that shelves all have one book when the bookshop first opens
     public static void StartShelves() {
         List<String> CategoriesUsed = new ArrayList<String>();
 
@@ -73,8 +68,37 @@ public class Main {
 
     }
 
+    // Our Main function which contains the runner code for the entire project
     public static void main(String[] args) {
+        // introducing popup GUI boxes for configurable parameters
+        JFrame jFrame = new JFrame();
+        String getAssistants = JOptionPane.showInputDialog(jFrame, "How many assistants would you like to work in the Bookstore?");
+            
+        JOptionPane.showMessageDialog(jFrame, "You Have Selected This Many Assistant: " + getAssistants);
+
+        String getTicks = JOptionPane.showInputDialog(jFrame, "What would you like the Ticks to seconds mapping to be like? (1000 is one tick a second a lower value is faster and a bigger value is slower)");
+            
+        JOptionPane.showMessageDialog(jFrame, "You Have Selected This Mapping: " + getTicks);
+
+        int Ticks = Integer.parseInt(getTicks);
+        int Assistants_Amount = Integer.parseInt(getAssistants);
+        
+        // Ensuring the input by user is valid and if it is not defaulting to alternative values
+        if (Assistants_Amount == 0) {
+            System.out.println("You didnt enter a valid whole number by default there will only be one assistant.");
+            Assistants_Amount = 1;
+        }
+        if (Ticks == 0) 
+        {
+            System.out.println("You Didnt enter a valid whole number, Ticks will default to one every second");
+        }
+        else {
+            TICK_TIME_SIZE = Ticks;
+        }
+        
         StartShelves();
+
+        // Adding the threads to a list of threads
         List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
             assistants.add(new Assistant("Assistant-" + i, booksInHands, booksCounter));
@@ -83,8 +107,10 @@ public class Main {
         threads.add(new Thread(new Customer()));
         threads.add(new Thread(new Tick(box)));
 
+        // Starting all the threads contained in the list
         for (Thread thread : threads) {
             thread.start();
         }
+
     }
 }
