@@ -27,7 +27,7 @@ public class Tick implements Runnable {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                System.out.println(Main.tickCount);
+                // System.out.println(Main.tickCount);
                 long threadId = Thread.currentThread().getId();
 
                 String isDelivery = Delivery.NextDeliveryTime();
@@ -41,6 +41,7 @@ public class Tick implements Runnable {
                     deliveryRecieved = true;
                     DeliveryCount++;
                 }
+                
                 Main.tickCount++;
 
                 if (Main.tickCount % Main.TICKS_PER_DAY == 0) {
@@ -92,10 +93,7 @@ public class Tick implements Runnable {
                 // System.out.println("Customer bought a " + genre + " book.");
                 // }
                 // }
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        
         }
     }
 

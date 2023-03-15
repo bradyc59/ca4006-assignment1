@@ -2,11 +2,14 @@ import java.util.*;
 
 public class Main {
     public static int TICKS_PER_DAY = 1000;
-    public static int TICK_TIME_SIZE = 100;
+    public static int TICK_TIME_SIZE = 10;
 
     public static int tickCount = 0;
     public static Box box = new Box();
+    private static List<Books> booksInHands = new ArrayList<Books>();
     private final static List<Assistant> assistants = new ArrayList<>();
+    private static List<Books> booksToTake = new ArrayList<Books>();
+
 
     public static int MilliSecondsNeeded(int TICK_TIME_SIZE, int HowManyTicks) 
     {
@@ -85,8 +88,8 @@ public class Main {
         StartShelves();
         List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
-            assistants.add(new Assistant());
-            threads.add(new Thread(new Assistant()));
+            assistants.add(new Assistant("Assistant-" + i, booksInHands));
+            threads.add(new Thread(new Assistant("Assistant-" + i, booksInHands)));
         }
         threads.add(new Thread(new Customer()));
         threads.add(new Thread(new Tick(box)));
