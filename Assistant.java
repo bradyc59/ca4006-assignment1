@@ -114,6 +114,7 @@ public class Assistant implements Runnable {
     public void run() {
 
         while (true) {
+            System.out.println(name);
             long threadId = Thread.currentThread().getId();
             try {
 

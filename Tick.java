@@ -21,6 +21,7 @@ public class Tick implements Runnable {
     public void run() {
 
         while (true) {
+            System.out.println(Main.tickCount);
                 try {
                     Thread.sleep(1 * Main.TICK_TIME_SIZE);
                 } catch (InterruptedException e) {
