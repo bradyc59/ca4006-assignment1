@@ -204,7 +204,7 @@ public class Customer implements Runnable {
                             Shelve.CustomerWaitingLine(Shelve.FictionWaitingLine, customer_and_start_time);
                             System.out
                                     .println("<" + Main.tickCount + ">" + "<" + threadId + ">" + customer
-                                            + "joined the waiting line for"
+                                            + " joined the waiting line for "
                                             + genre);
                         }
 
@@ -240,7 +240,7 @@ public class Customer implements Runnable {
                             Shelve.CustomerWaitingLine(Shelve.FantasyWaitingLine, customer_and_start_time);
                             System.out
                             .println("<" + Main.tickCount + ">" + "<" + threadId + ">" + customer
-                            + "joined the waiting line for"
+                            + " joined the waiting line for "
                             + genre);
                         }
 
@@ -275,7 +275,7 @@ public class Customer implements Runnable {
                             Shelve.CustomerWaitingLine(Shelve.CrimeWaitingLine, customer_and_start_time);
                             System.out
                             .println("<" + Main.tickCount + ">" + "<" + threadId + ">" + customer
-                            + "joined the waiting line for"
+                            + " joined the waiting line for "
                             + genre);
                         }
 
@@ -310,7 +310,7 @@ public class Customer implements Runnable {
                             Shelve.CustomerWaitingLine(Shelve.RomanceWaitingLine, customer_and_start_time);
                             System.out
                             .println("<" + Main.tickCount + ">" + "<" + threadId + ">" + customer
-                            + "joined the waiting line for"
+                            + " joined the waiting line for "
                             + genre);
                         }
 
@@ -345,7 +345,7 @@ public class Customer implements Runnable {
                             Shelve.CustomerWaitingLine(Shelve.HorrorWaitingLine, customer_and_start_time);
                             System.out
                             .println("<" + Main.tickCount + ">" + "<" + threadId + ">" + customer
-                            + "joined the waiting line for"
+                            + " joined the waiting line for "
                             + genre);
                         }
 
@@ -380,7 +380,7 @@ public class Customer implements Runnable {
                             Shelve.CustomerWaitingLine(Shelve.SportWaitingLine, customer_and_start_time);
                             System.out
                             .println("<" + Main.tickCount + ">" + "<" + threadId + ">" + customer
-                            + "joined the waiting line for"
+                            + " joined the waiting line for "
                             + genre);
                         }
 
