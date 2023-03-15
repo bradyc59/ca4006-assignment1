@@ -16,9 +16,7 @@ public class Shelve {
     static Queue<String> CrimeWaitingLine = new LinkedList<>();
 
     public static void AddBooksToShelves(Books book) {
-        // for (Books book : assistant.getBooks()) {
-        // System.out.println(book.toString().equals("Fiction"));
-        // System.out.println(book);
+
         if (book.toString().equals("Fiction")) {
             if (FictionShelf.size() < capacity) {
                 FictionShelf.add(book);
@@ -44,16 +42,6 @@ public class Shelve {
                 CrimeShelf.add(book);
             }
         }
-
-        // return FictionShelf, SportShelf, HorrorShelf, FantasyShelf, RomanceShelf,
-        // CrimeShelf;
-        // System.out.println(FictionShelf);
-        // System.out.println(HorrorShelf);
-        // System.out.println(SportShelf);
-        // System.out.println(FantasyShelf);
-        // System.out.println(RomanceShelf);
-        // System.out.println(CrimeShelf);
-        // return RomanceShelf;
     }
 
     public static Queue<String> CustomerWaitingLine(Queue<String> CustomerWaitingLine, String Customer) {
@@ -78,10 +66,6 @@ public class Shelve {
     }
 
     public static void main(String[] args) {
-        // Assistant assistant = new Assistant();
-        // assistant.main(args);
-        // System.out.println(assistant);
-        // AddBooksToShelves(assistant);
-        // System.out.println(FictionShelf);
+
     }
 }

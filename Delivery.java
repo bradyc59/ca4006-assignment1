@@ -19,17 +19,11 @@ public class Delivery {
 
             i++;
         }
-
-        // Used for Testing .... System.out.print(DeliveryList);
-
         return DeliveryList;
     }
 
     public int size() {
         int Size = DeliveryList.size();
-
-        // System.out.print(Size);
-
         return Size;
     }
 

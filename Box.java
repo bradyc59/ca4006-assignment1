@@ -59,15 +59,11 @@ public class Box implements Runnable{
 
     public int size() {
         int Size = BooksInBox.size();
-
-        // System.out.print(Size);
-
         return Size;
     }
 
     public static Box CreateNewBox() {
         Box box = new Box();
-        // System.out.println(box.getClass());
         return box;
     }
 
