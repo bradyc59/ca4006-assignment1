@@ -15,49 +15,27 @@ public class Tick implements Runnable {
     @Override
     public void run() {
 
-        while (Main.TICKS_PER_DAY > 0) {
-            try {
-                // Sleep for 1 tick
-                // System.out.println(deliveryTime);
-                Thread.sleep(100);
-                // System.out.println("DeliveryTime: " + deliveryTime);
-                // Main.TICKS_PER_DAY--;
+        while (true) {
+                try {
+                    Thread.sleep(1 * Main.TICK_TIME_SIZE);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                System.out.println(Main.tickCount);
                 long threadId = Thread.currentThread().getId();
 
                 String isDelivery = Delivery.NextDeliveryTime();
                 if (isDelivery == "True") {
                     Thread bookstoreThread = new Thread(bookstore);
                     System.out.println("<" + Main.tickCount + "> <" + threadId + ">" + "Recieved a delivery!");
-                    bookstoreThread.start();
-                    bookstoreThread.join();
+                    bookstoreThread.run();
                     deliveryTime = Delivery.NextDeliveryTime();
                     deliveryTime += Main.tickCount;
                     System.out.println("<" + Main.tickCount + "> <" + threadId + ">" + " Box: " + Box.box);
                     deliveryRecieved = true;
                 }
-                Main.tickCount++;
-                // Main.TICKS_PER_DAY--;
-                // System.out.println(Main.TICKS_PER_DAY);
-                // System.out.println(Main.tickCount);
-                // Randomly generate a customer every 10 ticks (on average)
-                // if (random.nextInt(10) == 0) {
-                // // Generate a random genre
-                // String[] genres = {"fiction", "horror", "romance", "fantasy", "poetry",
-                // "history"};
-                // String genre = genres[random.nextInt(genres.length)];
-
-                // // Attempt to buy a book from the genre
-                // boolean success = bookstore.getBook(genre);
-
-                // // If the purchase was successful, print a message
-                // if (success) {
-                // System.out.println("Customer bought a " + genre + " book.");
-                // }
-                // }
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+                Main.tickCount++; 
         }
     }
 
