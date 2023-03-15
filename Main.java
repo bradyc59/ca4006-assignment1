@@ -8,6 +8,15 @@ public class Main {
     public static Box box = new Box();
     private final static List<Assistant> assistants = new ArrayList<>();
 
+    public static int MilliSecondsNeeded(int TICK_TIME_SIZE, int HowManyTicks) 
+    {
+        int MillisToTick = 1000 / TICK_TIME_SIZE;
+
+        HowManyTicks = MillisToTick * HowManyTicks;
+
+        return HowManyTicks;
+    }
+
     public static void StartShelves() {
         List<String> CategoriesUsed = new ArrayList<String>();
 
@@ -85,12 +94,6 @@ public class Main {
         for (Thread thread : threads) {
             // System.out.println(thread);
             thread.start();
-        }
-
-        if (tickCount % TICKS_PER_DAY == 0) {
-            int AverageWaitTime = Customer.WaitTimeAverage(Customer.CustomerWaitTimes);
-
-            System.out.println(AverageWaitTime);
         }
     }
 }

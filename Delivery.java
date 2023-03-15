@@ -5,6 +5,7 @@ public class Delivery {
     static Object Books = new Books();
     static int size = 10;
     public static List<Books> DeliveryList = new ArrayList<Books>();
+    static int DeliveryCount = 0;
 
     public static List<Books> GenerateDelivery() {
         int i = 0;
@@ -60,10 +61,11 @@ public class Delivery {
     }
 
     public static void main(String[] args) {
-        // String isDelivery = NextDeliveryTime();
-        // if (isDelivery == "True") {
-        System.out.println(GenerateDelivery());
-        // }
+        String isDelivery = NextDeliveryTime();
+        if (isDelivery == "True") {
+            System.out.println(GenerateDelivery());
+            DeliveryCount++;
+        }
 
     }
 

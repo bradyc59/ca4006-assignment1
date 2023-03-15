@@ -11,9 +11,16 @@ public class Assistant implements Runnable {
     static int carrySpace = 10;
     static boolean isBusy = false;
 
-    public Assistant(){
-        // this.booksInHands = booksInHands;
+    public static void TakeBreak() {
+        try {
+        Thread.sleep(Main.MilliSecondsNeeded(Main.TICK_TIME_SIZE, 15));
+        }
+        catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
+
 
     public synchronized static List<Books> takeBooksFromBox() {
         List<Books> books = Box.getBooks();
@@ -73,6 +80,18 @@ public class Assistant implements Runnable {
         }
 
         return IsWaiting;
+    }
+
+    public int HowLongWillItTake(List<Books> BooksInHand) {
+        int BaseTimeToWalkToSection = 10000 / Main.TICK_TIME_SIZE;
+
+        int HowMuchExtraForBooks = (1000 / Main.TICK_TIME_SIZE) * BooksInHand.size();
+
+        int TotalSleepTime = BaseTimeToWalkToSection + HowMuchExtraForBooks;
+
+        TotalSleepTime = TotalSleepTime / 100;
+        
+        return TotalSleepTime;
     }
 
     @Override
